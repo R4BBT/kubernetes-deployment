@@ -2,14 +2,14 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const port = 8080;
+const port = 5000;
 
 app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res, next) => {
   console.log("request received");
-  res.status(200).json({ message: "hello, there" });
+  res.status(200).json({ message: "hello from the backend" });
 });
 
 app.listen(port, () => {
