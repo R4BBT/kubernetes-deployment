@@ -13,9 +13,9 @@ resource "google_container_cluster" "primary" {
 }
 
 resource "google_container_node_pool" "primary_nodes" {
-  name       = "${google_container_cluster.primary.name}-node-pool"
-  location   = var.default_region
-  cluster    = google_container_cluster.primary.name
+  name     = "${google_container_cluster.primary.name}-node-pool"
+  location = var.default_region
+  cluster  = google_container_cluster.primary.name
 
   autoscaling {
     min_node_count = 1
