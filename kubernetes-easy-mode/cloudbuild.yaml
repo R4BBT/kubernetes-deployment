@@ -2,8 +2,11 @@
 
 steps:
   - name: "gcr.io/cloud-builders/gke-deploy"
+    dir: kubernetes-easy-mode/
     args:
       - run
       - --filename=kubernetes/
       - --location=us-central1
       - --cluster=gke-primary-jti
+options:
+  logging: CLOUD_LOGGING_ONLY
