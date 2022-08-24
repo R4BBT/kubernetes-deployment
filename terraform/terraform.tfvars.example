@@ -1,0 +1,19 @@
+# Billing related information
+billing_account = "billing-account-id"
+
+# Project level information
+default_region       = "us-central1"
+default_zone         = "us-central1-a"
+credentials          = "path-to-service-account-key.json"
+bootstrap_project_id = "example-project-123456"
+
+# Enabling services
+enabled_services_set = ["compute.googleapis.com", "container.googleapis.com", "artifactregistry.googleapis.com", "iam.googleapis.com", "logging.googleapis.com", "monitoring.googleapis.com", "clouderrorreporting.googleapis.com", "cloudtrace.googleapis.com", "cloudprofiler.googleapis.com", "storage-component.googleapis.com", "iap.googleapis.com", "containerregistry.googleapis.com", "cloudbuild.googleapis.com", "sourcerepo.googleapis.com"]
+
+# Custom VPC source range
+kubernetes_subnet_cidr = {
+  "gke-uscentral1" = { cidr_block = "10.1.0.0/16", region = "us-central1", secondary_name = "gke-uscentral1-services", secondary_cidr_block = "10.4.0.0/16" }
+}
+
+# Kubernetes resource
+gke_cluster_name = "gke-primary"

@@ -41,18 +41,6 @@ variable "kubernetes_subnet_cidr" {
 }
 
 # Kubernetes specific configurations
-variable "gke_username" {
-  default     = ""
-  description = "gke username"
-  type        = string
-}
-
-variable "gke_password" {
-  default     = ""
-  description = "gke password"
-  type        = string
-}
-
 variable "gke_num_nodes" {
   default     = 2
   description = "number of gke nodes"
