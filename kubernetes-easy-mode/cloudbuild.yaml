@@ -1,0 +1,9 @@
+# https://github.com/GoogleCloudPlatform/cloud-builders/blob/master/gke-deploy/doc/gke-deploy_run.md
+
+steps:
+  - name: "gcr.io/cloud-builders/gke-deploy"
+    args:
+      - run
+      - --filename=kubernetes/
+      - --location=us-central1
+      - --cluster=gke-primary-jti
