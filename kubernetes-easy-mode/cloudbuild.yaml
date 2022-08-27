@@ -1,4 +1,5 @@
 # https://github.com/GoogleCloudPlatform/cloud-builders/blob/master/gke-deploy/doc/gke-deploy_run.md
+# https://cloud.google.com/build/docs/build-config-file-schema
 
 steps:
   - name: "gcr.io/cloud-builders/gke-deploy"

@@ -35,3 +35,16 @@ resource "google_compute_subnetwork" "kubernetes_subnet" {
   }
   depends_on = [google_project_service.project]
 }
+
+# Set up firewall rules
+resource "google_compute_firewall" "allow_ingress_internet" {
+  name      = "allow-ingress-internet"
+  project   = var.bootstrap_project_id
+  network   = google_compute_network.kubernetes_network.self_link
+  direction = "INGRESS"
+  allow {
+    protocol = "TCP"
+    ports    = ["80", "443"]
+  }
+  source_ranges = ["0.0.0.0/0"]
+}

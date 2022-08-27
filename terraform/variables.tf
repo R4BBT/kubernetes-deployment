@@ -47,7 +47,16 @@ variable "gke_num_nodes" {
   type        = number
 }
 
-variable "gke_cluster_name" {
-  description = "name of GKE cluster"
+variable "gke_primary_cluster_name" {
+  description = "name of GKE primary cluster"
+  type        = string
+}
+
+variable "gke_secondary_cluster_name" {
+  description = "name of GKE remote/secondary/backup cluster"
+  type        = string
+}
+variable "backup_region" {
+  description = "Backup region to create resources where applicable."
   type        = string
 }
