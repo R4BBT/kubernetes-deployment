@@ -30,8 +30,12 @@ resource "google_compute_subnetwork" "kubernetes_subnet" {
   region        = each.value.region
   network       = google_compute_network.kubernetes_network.self_link
   secondary_ip_range {
-    range_name    = each.value.secondary_name
-    ip_cidr_range = each.value.secondary_cidr_block
+    range_name    = each.value.secondary_pod_name
+    ip_cidr_range = each.value.secondary_pod_cidr_block
+  }
+  secondary_ip_range {
+    range_name    = each.value.secondary_service_name
+    ip_cidr_range = each.value.secondary_service_cidr_block
   }
   depends_on = [google_project_service.project]
 }

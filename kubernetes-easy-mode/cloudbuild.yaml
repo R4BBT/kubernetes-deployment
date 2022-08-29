@@ -8,6 +8,8 @@ steps:
       - run
       - --filename=kubernetes/
       - --location=us-central1
-      - --cluster=gke-primary-jti
+      - --cluster=gke-primary-rvj
+      - --namespace=default
+      - --label=(istio-injection=enabled)
 options:
   logging: CLOUD_LOGGING_ONLY

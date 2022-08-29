@@ -10,6 +10,14 @@ resource "google_container_cluster" "primary" {
 
   network    = google_compute_network.kubernetes_network.self_link
   subnetwork = google_compute_subnetwork.kubernetes_subnet["gke-uscentral1-primary"].self_link
+
+
+  ip_allocation_policy {
+    cluster_ipv4_cidr_block=""
+    # cluster_secondary_range_name  = google_compute_subnetwork.kubernetes_subnet["gke-uscentral1-primary"].secondary_ip_range.0.range_name
+    services_ipv4_cidr_block=""
+    # services_secondary_range_name = google_compute_subnetwork.kubernetes_subnet["gke-uscentral1-primary"].secondary_ip_range.1.range_name
+  }
 }
 
 resource "google_container_node_pool" "primary_nodes" {
@@ -28,7 +36,7 @@ resource "google_container_node_pool" "primary_nodes" {
   }
 
   node_config {
-    machine_type = "n1-standard-1"
+    machine_type = var.gke_nodepool_machine_type
     disk_size_gb = 50
     disk_type    = "pd-balanced"
 
@@ -62,6 +70,13 @@ resource "google_container_cluster" "secondary" {
 
   network    = google_compute_network.kubernetes_network.self_link
   subnetwork = google_compute_subnetwork.kubernetes_subnet["gke-uswest4-secondary"].self_link
+
+  ip_allocation_policy {
+    cluster_ipv4_cidr_block=""
+    # cluster_secondary_range_name  = google_compute_subnetwork.kubernetes_subnet["gke-uswest4-secondary"].secondary_ip_range.0.range_name
+    services_ipv4_cidr_block=""
+    # services_secondary_range_name = google_compute_subnetwork.kubernetes_subnet["gke-uswest4-secondary"].secondary_ip_range.1.range_name
+  }
 }
 
 resource "google_container_node_pool" "secondary_nodes" {
@@ -80,7 +95,7 @@ resource "google_container_node_pool" "secondary_nodes" {
   }
 
   node_config {
-    machine_type = "n1-standard-1"
+    machine_type = var.gke_nodepool_machine_type
     disk_size_gb = 50
     disk_type    = "pd-balanced"
 

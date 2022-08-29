@@ -33,10 +33,12 @@ variable "enabled_services_set" {
 variable "kubernetes_subnet_cidr" {
   description = "The map of subnets to be created in the project VPC"
   type = map(object({
-    cidr_block           = string
-    region               = string
-    secondary_name       = string
-    secondary_cidr_block = string
+    cidr_block                   = string
+    region                       = string
+    secondary_pod_name           = string
+    secondary_pod_cidr_block     = string
+    secondary_service_name       = string
+    secondary_service_cidr_block = string
   }))
 }
 
@@ -58,5 +60,9 @@ variable "gke_secondary_cluster_name" {
 }
 variable "backup_region" {
   description = "Backup region to create resources where applicable."
+  type        = string
+}
+variable "gke_nodepool_machine_type" {
+  description = "Machine type for the GKE nodepool"
   type        = string
 }
